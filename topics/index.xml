@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Conscientious Code</title>
-    <link>https://patrickcole.github.io/</link>
-    <description>Recent content on Conscientious Code</description>
+    <title>Topics on Conscientious Code</title>
+    <link>https://patrickcole.github.io/topics/</link>
+    <description>Recent content in Topics on Conscientious Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 13 May 2019 13:22:48 -0400</lastBuildDate>
     
-	<atom:link href="https://patrickcole.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://patrickcole.github.io/topics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       <guid>https://patrickcole.github.io/topics/performance/prefetching/</guid>
       <description>Pre-fetching gives the browser the ability to know what resources will need to be downloaded right away or in the future.
 Contents  DNS prefetching Resources  DNS prefetching Useful if assets are going to be downloaded from an external URL (other than hosted domain). For example, if fonts are going to be loaded from CDN, the DNS prefetching hint can tell the browser to start a connection to that location.</description>
-    </item>
-    
-    <item>
-      <title>Intentions</title>
-      <link>https://patrickcole.github.io/posts/my-first-post/</link>
-      <pubDate>Mon, 13 May 2019 12:40:59 -0400</pubDate>
-      
-      <guid>https://patrickcole.github.io/posts/my-first-post/</guid>
-      <description>This is just the start of my findings, notes and examples. I hope that I can use this platform to show my progression of learning things. It will also be helpful for me as I try to pull together all those topics that make up the web. I will do my best to try to keep things updated, but as we know, the web moves very quickly. Also, it is my intention to keep topics organized so that when I need to locate something for research, reference or discussion, I will have it at the ready.</description>
     </item>
     
   </channel>
