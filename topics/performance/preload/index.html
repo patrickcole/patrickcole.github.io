@@ -82,7 +82,11 @@ For example, an application has an intro screen to describe what the application
 
 <p>The example below shows the resource being applied via the <code>onload</code> event:</p>
 
-<pre><code class="language-html">&lt;link rel=&quot;preload&quot; as=&quot;style&quot; onload=&quot;this.rel = 'stylesheet'&quot; href='https://fonts.googleapis.com/css?family=Roboto:100,900|Material+Icons'&gt;
+<pre><code class="language-html">&lt;link 
+  rel=&quot;preload&quot; 
+  as=&quot;style&quot; 
+  onload=&quot;this.rel = 'stylesheet'&quot; 
+  href='https://fonts.googleapis.com/css?family=Roboto:100,900|Material+Icons'&gt;
 </code></pre>
 
 <p>*NOTE: This same technique of changing the <code>rel=&quot;stylesheet&quot;</code> can be applied to prefetching as well.</p>
