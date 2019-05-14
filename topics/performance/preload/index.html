@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Preload - Conscientious Code</title>
+    
+    <meta name="description" content="Contents  Pages Resources  Pages Preloading a page tells the browser that the user is definitely going to visit a page and the browser should get that page ready to load immediately.
+For example, an application has an intro screen to describe what the application is about. Once users accept entry into the application, the logical next page they would visit would be the home or main page. Ideally, users would want that page to load as quickly as possible.">
+    <meta name="author" content="">
+    
+    <link href="https://patrickcole.github.io/css/github-gist.min.css" rel="stylesheet">
+    <link href="https://patrickcole.github.io/css/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://patrickcole.github.io/img/apple-touch-icon.png">
+    <link rel="icon" href="https://patrickcole.github.io/img/favicon.ico">
+    
+    <meta name="generator" content="Hugo 0.55.5" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://patrickcole.github.io/index.xml" title="Conscientious Code">
+    
+    
+  </head>
+  <body class="single">
+    <header class="header">
+      <div class="wrap">
+        
+        <p class="logo"><a href="https://patrickcole.github.io/">Conscientious Code </a></p>
+        
+        
+      </div>
+    </header>
+    
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">Preload</h1>
+    <div class="post-meta">2019.5.14</div>
+  </header>
+  <div class="post-content">
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+<li>Pages</li>
+<li>Resources</li>
+</ul>
+
+<h3 id="pages">Pages</h3>
+
+<p>Preloading a page tells the browser that the user is definitely going to visit a page and the browser should get that page ready to load immediately.</p>
+
+<p>For example, an application has an intro screen to describe what the application is about. Once users accept entry into the application, the logical next page they would visit would be the home or main page. Ideally, users would want that page to load as quickly as possible. By prerendering the main page, the browser can serve it as quickly as possible.</p>
+
+<p>Their is a possibility that the user will not decide to proceed to the main page, but they are only loading the main page once (in the preload) and then they decide not to load it again. However, if the user is constantly hitting the main page, they would have it prerendered and the cache would be built, making it faster. Additionally, any scripts or assets that would be prerendered should be kept to a low size so that if the user does not decide to proceed they are not being &ldquo;taxed&rdquo; with a high amount of data.</p>
+
+<h3 id="resources-resource-hinting">Resources &ldquo;Resource Hinting&rdquo;</h3>
+
+<p>A potential specification for preloading assets is out there stating that instead of prefetching the asset if you might need it, a preload will always download the asset.</p>
+
+<p>Currently this specification is not supported in any browser, but that could change in the future.</p>
+
+<p><em>Update</em>: Resource hinting is one method to indicate that a resource can be preloaded into the cache and then applied to a page. This can be achieved by using the <code>as</code> property within the <code>&lt;link rel=&quot;preload&quot;&gt;</code>.</p>
+
+<p>The example below shows this:</p>
+
+<pre><code class="language-html">&lt;link rel=&quot;preload&quot; as=&quot;style&quot; href='https://fonts.googleapis.com/css?family=Roboto:100,900|Material+Icons'&gt;
+</code></pre>
+
+<p>Another example shows how to load woff2 font files:</p>
+
+<pre><code class="language-html">&lt;link rel=&quot;preload&quot; as=&quot;font&quot; type=&quot;font/woff2&quot; href=&quot;https://cdn.example.com/font.woff2&quot; crossorigin&gt;
+</code></pre>
+
+<p>However, as the Aligator.io article stated, the CSS will not be applied immediately. This is due to the resource being only stored in memory and not actually being applied to the webpage. This is actually a good thing, it allows us to preload the resource, keep it from blocking the &ldquo;critical path&rdquo; and then apply it when we need it and it has been loaded.</p>
+
+<p>Many examples show that once the <code>onload</code> event has been issued, the resource can then be applied via JavaScript. One possible side-effect of this is that some styles may change after the resource has been applied. This is a situation where there should be sufficient fallbacks or progressive enhancement to handle this issue.</p>
+
+<p>The example below shows the resource being applied via the <code>onload</code> event:</p>
+
+<pre><code class="language-html">&lt;link rel=&quot;preload&quot; as=&quot;style&quot; onload=&quot;this.rel = 'stylesheet'&quot; href='https://fonts.googleapis.com/css?family=Roboto:100,900|Material+Icons'&gt;
+</code></pre>
+
+<p>*NOTE: This same technique of changing the <code>rel=&quot;stylesheet&quot;</code> can be applied to prefetching as well.</p>
+
+<h4 id="preloading-javascript">Preloading JavaScript</h4>
+
+<p>Here&rsquo;s a sample of preloading JavaScript and then applying it. It is a slightly different syntax as the script node actually has to be created and inserted into the DOM for it to work. The preloading is still done through the <code>&lt;link&gt;</code> element but the <code>&lt;script&gt;</code> tag needs to be there (makes sense).</p>
+
+<pre><code class="language-html">&lt;link rel=&quot;preload&quot; href=&quot;used-later.js&quot; as=&quot;script&quot;&gt;
+&lt;!-- ... --&gt;
+&lt;script&gt;
+  var usedLaterScript = document.createElement('script');
+  usedLaterScript.src = 'used-later.js';
+  document.body.appendChild(usedLaterScript);
+&lt;/script&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="sources">Sources</h3>
+
+<ul>
+<li><a href="https://css-tricks.com/prefetching-preloading-prebrowsing/">Prefetching, preloading, prebrowsing | CSS-Tricks</a></li>
+<li><a href="https://alligator.io/html/preload-prefetch/">Using Preload and Prefetch in Your HTML to Load Assets ← Alligator.io</a></li>
+<li><a href="https://dev.to/crenshaw_dev/when-the-browser-can-t-take-a-preconnect-hint-6dn">When the browser can&rsquo;t take a (preconnect) hint - DEV Community 👩‍💻👨‍💻</a></li>
+</ul>
+</div>
+  <footer class="post-footer">
+    
+  </footer>
+  
+  
+  
+  
+</article>
+
+</main>
+<footer class="footer">
+  <span>&copy; 2019 Conscientious Code</span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+</footer>
+
+
+</body>
+</html>
+

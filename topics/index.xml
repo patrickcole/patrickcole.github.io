@@ -6,10 +6,31 @@
     <description>Recent content in Topics on Conscientious Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 May 2019 13:22:48 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 14 May 2019 09:00:00 -0400</lastBuildDate>
     
 	<atom:link href="https://patrickcole.github.io/topics/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Preload</title>
+      <link>https://patrickcole.github.io/topics/performance/preload/</link>
+      <pubDate>Tue, 14 May 2019 09:00:00 -0400</pubDate>
+      
+      <guid>https://patrickcole.github.io/topics/performance/preload/</guid>
+      <description>Contents  Pages Resources  Pages Preloading a page tells the browser that the user is definitely going to visit a page and the browser should get that page ready to load immediately.
+For example, an application has an intro screen to describe what the application is about. Once users accept entry into the application, the logical next page they would visit would be the home or main page. Ideally, users would want that page to load as quickly as possible.</description>
+    </item>
+    
+    <item>
+      <title>Critical Path</title>
+      <link>https://patrickcole.github.io/topics/performance/critical-path/</link>
+      <pubDate>Mon, 13 May 2019 14:05:45 -0400</pubDate>
+      
+      <guid>https://patrickcole.github.io/topics/performance/critical-path/</guid>
+      <description>The &amp;ldquo;Critical Path&amp;rdquo; defines the process of the browser downloading, parsing and rendering a webpage. This is broken up into the following process:
+ Network download HTML DOM parse CSSOM parse Layout Paint / Render JavaScript onload  There are many bottlenecks that can occur during these steps and limiting issues in each one is paramount to delivering a quick and performant webpage.
+Network Download Note: Downloading additional assets can add time to first paint or interactive mode</description>
+    </item>
     
     <item>
       <title>Prefetching</title>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Critical Path - Conscientious Code</title>
+    
+    <meta name="description" content="The &ldquo;Critical Path&rdquo; defines the process of the browser downloading, parsing and rendering a webpage. This is broken up into the following process:
+ Network download HTML DOM parse CSSOM parse Layout Paint / Render JavaScript onload  There are many bottlenecks that can occur during these steps and limiting issues in each one is paramount to delivering a quick and performant webpage.
+Network Download Note: Downloading additional assets can add time to first paint or interactive mode">
+    <meta name="author" content="">
+    
+    <link href="https://patrickcole.github.io/css/github-gist.min.css" rel="stylesheet">
+    <link href="https://patrickcole.github.io/css/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://patrickcole.github.io/img/apple-touch-icon.png">
+    <link rel="icon" href="https://patrickcole.github.io/img/favicon.ico">
+    
+    <meta name="generator" content="Hugo 0.55.5" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://patrickcole.github.io/index.xml" title="Conscientious Code">
+    
+    
+  </head>
+  <body class="single">
+    <header class="header">
+      <div class="wrap">
+        
+        <p class="logo"><a href="https://patrickcole.github.io/">Conscientious Code </a></p>
+        
+        
+      </div>
+    </header>
+    
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">Critical Path</h1>
+    <div class="post-meta">2019.5.13</div>
+  </header>
+  <div class="post-content">
+
+<p>The &ldquo;Critical Path&rdquo; defines the process of the browser downloading, parsing and rendering a webpage. This is broken up into the following process:</p>
+
+<ul>
+<li>Network download</li>
+<li>HTML DOM parse</li>
+<li>CSSOM parse</li>
+<li>Layout</li>
+<li>Paint / Render</li>
+<li>JavaScript onload</li>
+</ul>
+
+<p>There are many bottlenecks that can occur during these steps and limiting issues in each one is paramount to delivering a quick and performant webpage.</p>
+
+<h3 id="network-download">Network Download</h3>
+
+<p><strong>Note: Downloading additional assets can add time to first paint or interactive mode</strong></p>
+
+<p>Make as few network requests as possible. The more requests, the more time and bytes are sent to the browser. If you can combined assets so that they make one single request and do not compromise your asset, do it.</p>
+
+<p>By compressing, minifying and simplifying assets, their file size and network size will be smaller. This is a good practice to start with as more and more users are using mobile connections. By starting smaller, fewer bytes will be sent and then only when you need to scale up the resources, more will be downloaded (i.e. &ldquo;Lazy Loading&rdquo; or &ldquo;opt-in&rdquo; loading).</p>
+
+<p>By utilizing loading techniques such as <a href="https://patrickcole.github.io/topics/performance/prefetching/">prefetch</a> or <a href="https://patrickcole.github.io/topics/performance/preload/">preload</a> assets, those that are &ldquo;precached&rdquo; will be available the next time around and will not have to re-download. This, in turn, will speed up loading time as well as reduce network bandwidth usage.</p>
+
+<h4 id="sharding">Sharding</h4>
+
+<p>There is a technique of using multiple (sub)domains to serve assets from in parallel. With the advent of HTTP/2, this is no longer required. The reason for this trick was to get around the browser&rsquo;s limitations of how many assets could be served from a single domain at a time. By using multiple domain locations, the browser could open up as many domains as listed and serve all files concurrently.</p>
+
+<h4 id="dns-lookup">DNS Lookup</h4>
+
+<p>Each time you make a request, if that asset is not cached, the browser has to make a DNS lookup. The DNS handles the translation of a alphanumeric string into a numeric I.P address. This can be an expensive process if there are multiple requests going to different domains. However newer methods such as DNS preconnect and HTTP/2 can assist the process.</p>
+
+<h3 id="html-dom-parse">HTML DOM Parse</h3>
+
+<p><strong>Note: DOM parsing usually doesn&rsquo;t add too much time to process, unless document is really large or all DOM nodes are created via JavaScript</strong></p>
+
+<p>Each webpage is comprised of HTML tags that construct the Document Object Model. Once each tag has been parsed, it is up to the browser to begin the process of constructing these tags into nodes for layout.</p>
+
+<h3 id="cssom-parse">CSSOM Parse</h3>
+
+<p><strong>Note: CSS downloading and parsing will block the painting/rendering path</strong></p>
+
+<p>Any styles that are applied to the document (either through inline, tags or stylesheets) will next be parsed and their instructions applied to the CSSOM (CSS Object Model). This model constructs the graphics that will be eventually painted and rendered on the screen.</p>
+
+<p>It is recommended to send the CSS as early as possible when loading a document. However, ensure that the amount of CSS loaded early in the process is fairly minimal as it <strong>will block</strong> the rendering process. One technique that can help with this is to have a very small amount of &ldquo;bare-bones&rdquo; CSS to get started and then have external supplemental CSS to load later on in the load cycle. This basic CSS would be inlined or embedded in a style tag to render immediately without a network request. The obvious downside with this is that it is not managed in a stylesheet. However, with today&rsquo;s build techniques having includes or build steps to include inlined styles is fairly common.</p>
+
+<p><strong>Extra Notes</strong></p>
+
+<ul>
+<li>Cache CSS</li>
+<li>Gzip</li>
+<li>Minify it</li>
+</ul>
+
+<h4 id="unused-css">Unused CSS</h4>
+
+<p>Make sure to remove any unused CSS rules. Each additional rule that is added to the stylesheet or declaration will need to be parsed by the CSSOM. If that rule does not apply to the current page, it will be ignored in the painting but the resources are still being used to parse it.</p>
+
+<p>There are many tools out to analyze a page&rsquo;s HTML and CSS to verify how many unused rules exist. Also, implementing techniques such as code splitting or tree shaking will take care of the unused rules. There&rsquo;s also some discussion of using scoped CSS modules to handle the unused rules.</p>
+
+<h3 id="layout">Layout</h3>
+
+<p>TODO</p>
+
+<h3 id="paint">Paint</h3>
+
+<p>TODO</p>
+
+<h3 id="javascript">JavaScript</h3>
+
+<p>JavaScript will block any assets from being downloaded. This is due to the browser needing to halt the downloading process to address any script changes that may occur.</p>
+
+<p>A good idea when using third-party scripts is to place them as the last script elements to be downloaded as they may pause the downloading of additional assets. These assets may not be fully downloaded until the third-party script has been executed completely, which could take a while.</p>
+
+<p>Note the previous statement was pulled from an article written in 2013 and newer techniques of async and defer should help ease the issue outlined.</p>
+
+<hr />
+
+<h6 id="sources">Sources</h6>
+
+<ul>
+<li><a href="https://csswizardry.com/2013/01/front-end-performance-for-web-designers-and-front-end-developers/">Front-end performance for web designers and front-end developers – CSS Wizardry – CSS Architecture, Web Performance Optimisation, and more, by Harry Roberts</a></li>
+</ul>
+</div>
+  <footer class="post-footer">
+    
+  </footer>
+  
+  
+  
+  
+</article>
+
+</main>
+<footer class="footer">
+  <span>&copy; 2019 Conscientious Code</span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+</footer>
+
+
+</body>
+</html>
+
