@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>HTTP/2 - Conscientious Code</title>
+    
+    <meta name="description" content="Designed to make webpages and applications load resources much faster and reducing the number of connections.
+Better performance in the transport layer of the browser&rsquo;s stack of webpage processing.
+Enables multiplexing requests and responses for quicker concurrent transfer of data.
+Adds support for prioritization of requests and server push commands.
+Additional features such as:
+ New flow control Error handling Mechanisms for upgrading  HTTP/2 is built on-top of the existing standards.">
+    <meta name="author" content="">
+    
+    <link href="https://patrickcole.github.io/css/github-gist.min.css" rel="stylesheet">
+    <link href="https://patrickcole.github.io/css/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://patrickcole.github.io/img/apple-touch-icon.png">
+    <link rel="icon" href="https://patrickcole.github.io/img/favicon.ico">
+    
+    <meta name="generator" content="Hugo 0.55.5" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://patrickcole.github.io/index.xml" title="Conscientious Code">
+    
+    
+  </head>
+  <body class="single">
+    <header class="header">
+      <div class="wrap">
+        
+        <p class="logo"><a href="https://patrickcole.github.io/">Conscientious Code </a></p>
+        
+        
+      </div>
+    </header>
+    
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">HTTP/2</h1>
+    <div class="post-meta">2019.5.14</div>
+  </header>
+  <div class="post-content">
+
+<p>Designed to make webpages and applications load resources much faster and reducing the number of connections.</p>
+
+<p>Better performance in the transport layer of the browser&rsquo;s stack of webpage processing.</p>
+
+<p>Enables multiplexing requests and responses for quicker concurrent transfer of data.</p>
+
+<p>Adds support for prioritization of requests and server push commands.</p>
+
+<p>Additional features such as:</p>
+
+<ul>
+<li>New flow control</li>
+<li>Error handling</li>
+<li>Mechanisms for upgrading</li>
+</ul>
+
+<p>HTTP/2 is built on-top of the existing standards. It redefines how data is constructed and transferred. No upgrades are required to &ldquo;plug into&rdquo; using HTTP/2 with current webpages.</p>
+
+<p>A new binary layer for framing was created to usher in a new standard that can deliver all the performance needs of low power devices and slower connections. The new format is not backwards compatible with the previous standards of HTTP/1.x.</p>
+
+<p>Any configuration or opt-in is done with server configurations or custom clients such as web browsers.</p>
+
+<p>HTTP/2 is built on the research on the SPDY protocol at Google. The goal of SPDY was to address loading concerns and reduce complexity for deployment of webpages. Additionally, through the involvement of the open-source community, the protocol was supplemented with those whom held a stake in the new research.</p>
+
+<p>Through the development of SPDY, the team was able to use it to test and validate features that would become the HTTP/2 standard that is now accepted.</p>
+
+<h3 id="a-bit-of-history">A Bit of History</h3>
+
+<p>HTTP/1.x clients needed to use multiple connections to deliver concurrent transfer. It also was not able to compress headers for both request and response and therefore resulted in redundant data. Network prioritization was not possible for resources and would bring resources in with not regard for importance.</p>
+
+<h3 id="solutions">Solutions</h3>
+
+<p>Headers compression has been implemented to reduce the data that is redundant via request and response commands.</p>
+
+<p>Additionally, multiple resources can be fetched and transferred on the same connection. It provides a mechanism for both request and response operations to exist without closing the connection to a source. This in-turn reduces the operations the network layer has to perform and results in faster loading websites.</p>
+
+<p>Finally, the browser can now perform prioritized requests so that requests with higher urgency will now be performed earlier on in the process. This will speed up loading of sites as the required resources arrive much faster.</p>
+
+<p>Fewer TCP connections will help ease the congestion on the network layer and result in more efficient experiences.</p>
+
+<h3 id="binary-framing-layer">Binary Framing Layer</h3>
+
+<p>The new framing layer of requests and responses has been rearchitected to use binary as the encoding format. These new binary &ldquo;layers&rdquo; are transmitted in small chunks and then transferred via the open connection. The server and browser are able to accept and parse these chunks as long as they both are configured to accept the HTTP/2 protocol. However, if either the server or client are still using the older protocol, the application will still transfer data, but will not be able to utilize the features of HTTP/2.</p>
+
+<h3 id="new-terms">New Terms</h3>
+
+<ul>
+<li>Stream (a bidirectional flow of bytes within an established connection, able to carry one or more messages)</li>
+<li>Message (a complete sequence of frames that map to a logical request or response action)</li>
+<li>Frame (smallest unit of communication, with a header required to determine which stream it belongs to)</li>
+</ul>
+
+<p>Communication is performed over a TCP connection, can be multiple if needed. Every stream contains a unique id, and if needed, a priority identifier. Messages represent HTTP messages (request/response) containing one or more frames. Frames will contain the header information, data and additional identification properties.</p>
+
+<p>Frames can be interleaved over a connection so that the messages are not dependent on the previous&rsquo; response as was the case in HTTP/1.x.</p>
+
+<p>The solution of interleaving requests removes the need for traditional techniques such as concatenated files, image sprites and domain sharding of resources. All of these previous techniques required technical overhead to implement.</p>
+
+<h3 id="prioritization">Prioritization</h3>
+
+<p>Being that connections can now pass multiple frames asynchronously the need for a priority rating can help guide which frames need to be passed first.</p>
+
+<p>A stream can be assigned with an integer (1-256) to denote their priority as well as a dependency to ensure that streams are delivered in the proper order (along with urgency.)</p>
+
+<p>This system can help create a prioritization tree where the loading can have rules to handle requests and data download.</p>
+
+<h3 id="single-connection-per-origin">Single Connection per Origin</h3>
+
+<p>Connections can be persistent in HTTP/2 and therefore only one connection will be established to handle all requests and responses from a single domain. This improvement helps all areas of request, transfer, downloading and parsing of data as fewer operations are needed to achieve the same result as the previous protocol.</p>
+
+<h3 id="server-push">Server Push</h3>
+
+<p>For every request to a HTTP/2 server, the response can also push additional resources without having to specify them explicitly on the client. Push resources can be:</p>
+
+<ul>
+<li>Cached by the client</li>
+<li>Reused in multiple pages</li>
+<li>Multiplexed alongside other resources</li>
+<li>Prioritized</li>
+<li>Declined by client</li>
+</ul>
+
+<p>These pushed resources need to be specified by the server and delivered to the client before the client actually makes a request for them (as is the traditional case.) <code>PUSH_PROMISE</code> offers the ability to do just that.</p>
+
+<h3 id="compression">Compression</h3>
+
+<p>In HTTP/1.x header information was sent as plain text with new lines dictating each new directive. To remove a large amount of overhead, Header compression has been implemented in HTTP/2. This is done using the HPACK compression format. Essentially, the header values are stored in index tables so that when they are used multiple times over, the data is not resent but rather referenced from memory. Any new header values are transferred (and subsequently re-indexed to be used later on, if needed.)</p>
+
+<hr />
+
+<h6 id="sources">Sources</h6>
+
+<ul>
+<li><a href="https://developers.google.com/web/fundamentals/performance/http2/">Introduction to HTTP/2  |  Web Fundamentals  |  Google Developers</a></li>
+</ul>
+</div>
+  <footer class="post-footer">
+    
+  </footer>
+  
+  
+  
+  
+</article>
+
+</main>
+<footer class="footer">
+  <span>&copy; 2019 Conscientious Code</span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+</footer>
+
+
+</body>
+</html>
+

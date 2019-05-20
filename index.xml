@@ -6,10 +6,24 @@
     <description>Recent content on Conscientious Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 May 2019 09:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 14 May 2019 09:52:53 -0400</lastBuildDate>
     
 	<atom:link href="https://patrickcole.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HTTP/2</title>
+      <link>https://patrickcole.github.io/topics/network/http2/</link>
+      <pubDate>Tue, 14 May 2019 09:52:53 -0400</pubDate>
+      
+      <guid>https://patrickcole.github.io/topics/network/http2/</guid>
+      <description>Designed to make webpages and applications load resources much faster and reducing the number of connections.
+Better performance in the transport layer of the browser&amp;rsquo;s stack of webpage processing.
+Enables multiplexing requests and responses for quicker concurrent transfer of data.
+Adds support for prioritization of requests and server push commands.
+Additional features such as:
+ New flow control Error handling Mechanisms for upgrading  HTTP/2 is built on-top of the existing standards.</description>
+    </item>
     
     <item>
       <title>Preload</title>
