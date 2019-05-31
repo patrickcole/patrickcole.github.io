@@ -6,10 +6,20 @@
     <description>Recent content on Conscientious Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 May 2019 09:52:53 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 31 May 2019 16:06:41 -0400</lastBuildDate>
     
 	<atom:link href="https://patrickcole.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>react-youtube</title>
+      <link>https://patrickcole.github.io/posts/dependencies/react-youtube/</link>
+      <pubDate>Fri, 31 May 2019 16:06:41 -0400</pubDate>
+      
+      <guid>https://patrickcole.github.io/posts/dependencies/react-youtube/</guid>
+      <description>I just wanted to post a quick article on this new dependency I found recently. The react-youtube module is very useful for getting an embedded YouTube video inside your applications. I found the installation and configuration of the module to be very easy.
+It&amp;rsquo;s also important to note that this module will work with the YouTube IFrame Player API and has links to the documentation for configuration. I have implemented a copy of this module inside my latest project react-OST where I am using the player for embedding soundtrack videos that have been uploaded.</description>
+    </item>
     
     <item>
       <title>HTTP/2</title>
