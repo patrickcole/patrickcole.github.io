@@ -6,10 +6,20 @@
     <description>Recent content on Conscientious Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 31 May 2019 16:06:41 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 04 Jun 2019 15:59:37 -0400</lastBuildDate>
     
 	<atom:link href="https://patrickcole.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Be Careful With Env Files</title>
+      <link>https://patrickcole.github.io/posts/be-careful-with-env-files/</link>
+      <pubDate>Tue, 04 Jun 2019 15:59:37 -0400</pubDate>
+      
+      <guid>https://patrickcole.github.io/posts/be-careful-with-env-files/</guid>
+      <description>Oh they are soo nice to work with aren&amp;rsquo;t they? Until you realize that you accidentally uploaded one to your public repository. That&amp;rsquo;s what I accidentally did today. Fortunately, I caught it early on so that I didn&amp;rsquo;t have any issues with my database that I&amp;rsquo;m using.
+I have learned from this that I really need to think ahead with dealing with environment variables. Simply placing them in as an afterthought or during prototyping is not a great idea.</description>
+    </item>
     
     <item>
       <title>react-youtube</title>
