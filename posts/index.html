@@ -49,6 +49,20 @@
 
 <article class="post-entry">
   <header class="entry-header">
+    <h2>Using JSON With Localstorage</h2>
+  </header>
+  <section class="entry-content">
+   <p>Remember that JSON has to be formatted before it can be saved and properly parsed when retrieved. These gotchas can hurt if you are working with JavaScript objects and are expecting them to be native objects from the start.
+When saving JSON data to storage, make sure that you are calling the JSON.stringify() method on your object either before or during the localStorage.setItem(&#39;key&#39;, value) call. What this ensures is that the value will be a properly formatted JSON string and will retain its relationship data and values....</p>
+  </section>
+  <footer class="entry-footer">
+    <time>2019.6.8</time>
+  </footer>
+  <a class="entry-link" href="https://patrickcole.github.io/posts/using-json-with-localstorage/"></a>
+</article>
+
+<article class="post-entry">
+  <header class="entry-header">
     <h2>Be Careful With Env Files</h2>
   </header>
   <section class="entry-content">

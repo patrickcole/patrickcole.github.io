@@ -6,10 +6,20 @@
     <description>Recent content on Conscientious Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Jun 2019 15:59:37 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 08 Jun 2019 15:00:00 -0400</lastBuildDate>
     
 	<atom:link href="https://patrickcole.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using JSON With Localstorage</title>
+      <link>https://patrickcole.github.io/posts/using-json-with-localstorage/</link>
+      <pubDate>Sat, 08 Jun 2019 15:00:00 -0400</pubDate>
+      
+      <guid>https://patrickcole.github.io/posts/using-json-with-localstorage/</guid>
+      <description>Remember that JSON has to be formatted before it can be saved and properly parsed when retrieved. These gotchas can hurt if you are working with JavaScript objects and are expecting them to be native objects from the start.
+When saving JSON data to storage, make sure that you are calling the JSON.stringify() method on your object either before or during the localStorage.setItem(&#39;key&#39;, value) call. What this ensures is that the value will be a properly formatted JSON string and will retain its relationship data and values.</description>
+    </item>
     
     <item>
       <title>Be Careful With Env Files</title>

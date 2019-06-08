@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Using JSON With Localstorage - Conscientious Code</title>
+    
+    <meta name="description" content="Remember that JSON has to be formatted before it can be saved and properly parsed when retrieved. These gotchas can hurt if you are working with JavaScript objects and are expecting them to be native objects from the start.
+When saving JSON data to storage, make sure that you are calling the JSON.stringify() method on your object either before or during the localStorage.setItem(&#39;key&#39;, value) call. What this ensures is that the value will be a properly formatted JSON string and will retain its relationship data and values.">
+    <meta name="author" content="">
+    
+    <link href="https://patrickcole.github.io/css/github-gist.min.css" rel="stylesheet">
+    <link href="https://patrickcole.github.io/css/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://patrickcole.github.io/img/apple-touch-icon.png">
+    <link rel="icon" href="https://patrickcole.github.io/img/favicon.ico">
+    
+    <meta name="generator" content="Hugo 0.55.5" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://patrickcole.github.io/index.xml" title="Conscientious Code">
+    
+    
+  </head>
+  <body class="single">
+    <header class="header">
+      <div class="wrap">
+        
+        <p class="logo"><a href="https://patrickcole.github.io/">Conscientious Code </a></p>
+        
+        
+      </div>
+    </header>
+    
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">Using JSON With Localstorage</h1>
+    <div class="post-meta">2019.6.8</div>
+  </header>
+  <div class="post-content"><p>Remember that JSON has to be formatted before it can be saved and properly parsed when retrieved. These gotchas can hurt if you are working with JavaScript objects and are expecting them to be native objects from the start.</p>
+
+<p>When saving JSON data to storage, make sure that you are calling the <code>JSON.stringify()</code> method on your object either before or during the <code>localStorage.setItem('key', value)</code> call. What this ensures is that the value will be a properly formatted JSON string and will retain its relationship data and values.</p>
+
+<p>Upon retrieval of JSON in localStorage, make sure that you are calling <code>JSON.parse()</code> on the <code>localStorage.getItem('key')</code> call so that the data can be properly formatted back to a JavaScript object with proper keys and values.</p>
+
+<p>I have provided some sample calls below to show how this can be done:</p>
+
+<pre><code class="language-js">
+// JavaScript object to handle favorite games:
+let favorites = [
+  { id: 1, title: 'Jenga' },
+  { id: 5, title: 'Tic-Tac-Toe' }
+];
+
+// Saving them into localStorage:
+localStorage.setItem('favorites', JSON.stringify(favorites));
+
+// the result will be this as a value in localStorage:
+// [{&quot;id&quot;:1,&quot;title&quot;:&quot;Jenga&quot;},{&quot;id&quot;:2,&quot;title&quot;:&quot;Tic-Tac-Toe&quot;}]
+
+// Get the data back from localStorage:
+let retrievedFavorites = JSON.parse( localStorage.getItem('favorites') );
+
+// The retrievedFavorites now has the object again and could be applied
+// back to the favorites variable if desired.
+</code></pre>
+
+<p><img src="https://media.giphy.com/media/9jb1IK331xkGs/giphy.gif" alt="Scene from Jurassic Park, You didn't say the magic word" />
+Ah ah ah, you didn&rsquo;t parse the JSON!</p>
+
+<p>The idea behind this post is to show how to properly handle JSON data with localStorage so that you will not run into the same issues I had. I was constantly questioning my code wondering why it was not working properly. Ultimately, my issue was that I was not parsing the JSON values when I retrieved from the storage.</p>
+</div>
+  <footer class="post-footer">
+    
+  </footer>
+  
+  
+  
+  
+</article>
+
+</main>
+<footer class="footer">
+  <span>&copy; 2019 Conscientious Code</span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+</footer>
+
+
+</body>
+</html>
+
