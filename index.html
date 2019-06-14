@@ -25,13 +25,29 @@
   <body class="list home">
     <header class="header">
       <div class="wrap">
-        
-        <h1 class="logo"><a href="https://patrickcole.github.io/">Conscientious Code </a></h1>
-        
-        
+        <div class="logo">
+            
+            <h1><a href="https://patrickcole.github.io/">Conscientious Code </a></h1>
+            
+            <p class="subtitle">works by Patrick Cole, Front-End Developer</p>
+        </div>
+        <nav class="nav">
+          <ul>
+            
+            
+            <li class="">
+              <a href="/pages/about/">About</a>
+            </li>
+            
+            <li class="">
+              <a href="/pages/work/">Work</a>
+            </li>
+            
+          </ul>
+          </nav>
       </div>
     </header>
-    
+
     <main class="main">
 
 
@@ -50,7 +66,7 @@
 When saving JSON data to storage, make sure that you are calling the JSON.stringify() method on your object either before or during the localStorage.setItem(&#39;key&#39;, value) call. What this ensures is that the value will be a properly formatted JSON string and will retain its relationship data and values....</p>
   </section>
   <footer class="entry-footer">
-    <time>2019.6.8</time>
+    <time>Saturday, June 8, 2019</time>
   </footer>
   <a class="entry-link" href="https://patrickcole.github.io/posts/using-json-with-localstorage/"></a>
 </article>
@@ -64,7 +80,7 @@ When saving JSON data to storage, make sure that you are calling the JSON.string
 I have learned from this that I really need to think ahead with dealing with environment variables. Simply placing them in as an afterthought or during prototyping is not a great idea....</p>
   </section>
   <footer class="entry-footer">
-    <time>2019.6.4</time>
+    <time>Tuesday, June 4, 2019</time>
   </footer>
   <a class="entry-link" href="https://patrickcole.github.io/posts/be-careful-with-env-files/"></a>
 </article>
@@ -78,7 +94,7 @@ I have learned from this that I really need to think ahead with dealing with env
 It’s also important to note that this module will work with the YouTube IFrame Player API and has links to the documentation for configuration. I have implemented a copy of this module inside my latest project react-OST where I am using the player for embedding soundtrack videos that have been uploaded....</p>
   </section>
   <footer class="entry-footer">
-    <time>2019.5.31</time>
+    <time>Friday, May 31, 2019</time>
   </footer>
   <a class="entry-link" href="https://patrickcole.github.io/posts/dependencies/react-youtube/"></a>
 </article>
@@ -96,7 +112,7 @@ Additional features such as:
  New flow control Error handling Mechanisms for upgrading  HTTP/2 is built on-top of the existing standards....</p>
   </section>
   <footer class="entry-footer">
-    <time>2019.5.14</time>
+    <time>Tuesday, May 14, 2019</time>
   </footer>
   <a class="entry-link" href="https://patrickcole.github.io/topics/network/http2/"></a>
 </article>
@@ -110,67 +126,32 @@ Additional features such as:
 For example, an application has an intro screen to describe what the application is about. Once users accept entry into the application, the logical next page they would visit would be the home or main page. Ideally, users would want that page to load as quickly as possible....</p>
   </section>
   <footer class="entry-footer">
-    <time>2019.5.14</time>
+    <time>Tuesday, May 14, 2019</time>
   </footer>
   <a class="entry-link" href="https://patrickcole.github.io/topics/performance/preload/"></a>
 </article>
 
-<article class="post-entry">
-  <header class="entry-header">
-    <h2>Critical Path</h2>
-  </header>
-  <section class="entry-content">
-   <p>The “Critical Path” defines the process of the browser downloading, parsing and rendering a webpage. This is broken up into the following process:
- Network download HTML DOM parse CSSOM parse Layout Paint / Render JavaScript onload  There are many bottlenecks that can occur during these steps and limiting issues in each one is paramount to delivering a quick and performant webpage.
-Network Download Note: Downloading additional assets can add time to first paint or interactive mode...</p>
-  </section>
-  <footer class="entry-footer">
-    <time>2019.5.13</time>
-  </footer>
-  <a class="entry-link" href="https://patrickcole.github.io/topics/performance/critical-path/"></a>
-</article>
-
-<article class="post-entry">
-  <header class="entry-header">
-    <h2>Prefetching</h2>
-  </header>
-  <section class="entry-content">
-   <p>Pre-fetching gives the browser the ability to know what resources will need to be downloaded right away or in the future.
-Contents  DNS prefetching Resources  DNS prefetching Useful if assets are going to be downloaded from an external URL (other than hosted domain). For example, if fonts are going to be loaded from CDN, the DNS prefetching hint can tell the browser to start a connection to that location....</p>
-  </section>
-  <footer class="entry-footer">
-    <time>2019.5.13</time>
-  </footer>
-  <a class="entry-link" href="https://patrickcole.github.io/topics/performance/prefetching/"></a>
-</article>
-
-<article class="post-entry">
-  <header class="entry-header">
-    <h2>Intentions</h2>
-  </header>
-  <section class="entry-content">
-   <p>This is just the start of my findings, notes and examples. I hope that I can use this platform to show my progression of learning things. It will also be helpful for me as I try to pull together all those topics that make up the web. I will do my best to try to keep things updated, but as we know, the web moves very quickly. Also, it is my intention to keep topics organized so that when I need to locate something for research, reference or discussion, I will have it at the ready....</p>
-  </section>
-  <footer class="entry-footer">
-    <time>2019.5.13</time>
-  </footer>
-  <a class="entry-link" href="https://patrickcole.github.io/posts/my-first-post/"></a>
-</article>
 
 
 
-
-
-</main>
-<footer class="footer">
-  <span>&copy; 2019 Conscientious Code</span>
-  <span>&middot;</span>
-  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
-  <span>&middot;</span>
-  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+<footer class="page-footer">
+  <nav class="pagination">
+    
+    
+    <a class="next" href="/page/2/">Next Page →</a>
+    
+  </nav>
 </footer>
 
 
-</body>
+  </main>
+  <footer class="footer">
+    <span>&copy; 2019 Conscientious Code</span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+    <span>&middot;</span>
+    <span>Theme️ derived from <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+  </footer>
+  </body>
 </html>
 
