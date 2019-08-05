@@ -4,8 +4,19 @@
   
   <url>
     <loc>https://patrickcole.github.io/</loc>
-    <lastmod>2019-06-14T11:31:03-04:00</lastmod>
+    <lastmod>2019-08-05T15:32:06-04:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://patrickcole.github.io/posts/</loc>
+    <lastmod>2019-08-05T15:32:06-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://patrickcole.github.io/posts/rest-reminders/</loc>
+    <lastmod>2019-08-05T15:32:06-04:00</lastmod>
   </url>
   
   <url>
@@ -22,12 +33,6 @@
   <url>
     <loc>https://patrickcole.github.io/pages/about/</loc>
     <lastmod>2019-06-14T11:31:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://patrickcole.github.io/posts/</loc>
-    <lastmod>2019-06-08T15:00:00-04:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

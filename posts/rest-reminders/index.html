@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>REST Reminders - Conscientious Code</title>
+    
+    <meta name="description" content="Just a quick post today, but this one unfortunately sidetracked me for a bit. Just remember a couple of things:
+ Always ensure that when providing objects as body of a POST request, that you use JSON.stringify to properly encode them. A GET request using fetch cannot have body content associated with it. The body content in JSON is best used with POST or PATCH requests. My dilemma was that I had copied one fetch request, which was a POST request and started using it as a GET without removing the declaration of the body content.">
+    <meta name="author" content="">
+    
+    <link href="https://patrickcole.github.io/css/github-gist.min.css" rel="stylesheet">
+    <link href="https://patrickcole.github.io/css/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://patrickcole.github.io/img/apple-touch-icon.png">
+    <link rel="icon" href="https://patrickcole.github.io/img/favicon.ico">
+    
+    <meta name="generator" content="Hugo 0.55.5" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://patrickcole.github.io/index.xml" title="Conscientious Code">
+    
+    
+  </head>
+  <body class="single">
+    <header class="header">
+      <div class="wrap">
+        <div class="logo">
+            
+            <p><a href="https://patrickcole.github.io/">Conscientious Code </a></p>
+            
+            <p class="subtitle">works by Patrick Cole, Front-End Developer</p>
+        </div>
+        <nav class="nav">
+          <ul>
+            
+            
+            <li class="">
+              <a href="/pages/about/">About</a>
+            </li>
+            
+            <li class="">
+              <a href="/pages/work/">Work</a>
+            </li>
+            
+          </ul>
+          </nav>
+      </div>
+    </header>
+
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">REST Reminders</h1>
+    <div class="post-meta">
+      Monday, August 5, 2019
+    </div>
+  </header>
+  <div class="post-content"><p>Just a quick post today, but this one unfortunately sidetracked me for a bit. Just remember a couple of things:</p>
+
+<ul>
+<li>Always ensure that when providing objects as <code>body</code> of a <code>POST</code> request, that you use <code>JSON.stringify</code> to properly encode them.</li>
+<li>A <code>GET</code> request using fetch cannot have <code>body</code> content associated with it. The <code>body</code> content in JSON is best used with <code>POST</code> or <code>PATCH</code> requests. My dilemma was that I had copied one fetch request, which was a <code>POST</code> request and started using it as a <code>GET</code> without removing the declaration of the body content.</li>
+<li>When sending <code>body</code> content in a <code>POST</code>, ensure that the <code>content-type</code> is set to <code>application/json</code>. Otherwise, it will treat the body content as plaintext, which would explain why my <code>req.body</code> was coming back as undefined.</li>
+</ul>
+
+<p>Just a couple of REST reminders as you go out and make your APIs and request routes.</p>
+</div>
+  <footer class="post-footer">
+    
+  </footer>
+  
+  
+  
+  
+</article>
+
+  </main>
+  <footer class="footer">
+    <span>&copy; 2019 Conscientious Code</span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+    <span>&middot;</span>
+    <span>Theme️ derived from <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+  </footer>
+  </body>
+</html>
+
